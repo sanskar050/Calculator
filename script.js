@@ -16,6 +16,11 @@ document.querySelectorAll(".button").forEach((btn) => {
 
 function solve() {
     let string = document.querySelector(".input").innerHTML
-    let result = eval(string)
-    document.querySelector(".input").innerHTML = result
+    string = string.replace(/(\d+(\.\d+)?)%/g, '($1/100)')
+    try {
+        let result = eval(string)
+        document.querySelector(".input").innerHTML = result
+    } catch (e) {
+        document.querySelector(".input").innerHTML = "Error"
+    }
 }
